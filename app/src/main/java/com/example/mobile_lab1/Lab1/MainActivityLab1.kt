@@ -59,35 +59,36 @@ class MainActivityLab1 : AppCompatActivity() {
         calculate.setOnClickListener{
             calculate_init()
 
+
             if (selected == "Rectangle Area")
-                logic = Logic().rectangleArea(lenght_value, width_value)
+                logic = Form().rectangleArea(lenght_value, width_value)
 
             if (selected == "Rectangle Perimeter")
-                logic = Logic().rectanglePerimeter(lenght_value, width_value)
+                logic = Form().rectanglePerimeter(lenght_value, width_value)
 
             if (selected == "Circle Area")
-                logic = Logic().circleArea(radius_value)
+                logic = Form().circleArea(radius_value)
 
             if (selected == "Circle Circumference")
-                logic = Logic().circleCircumference(radius_value)
+                logic = Form().circleCircumference(radius_value)
 
             if (selected == "Right Triangle Area")
-                logic = Logic().rightTriangleArea(base_value, height_value)
+                logic = Form().rightTriangleArea(base_value, height_value)
 
             if (selected == "Right Triangle Perimeter")
-                logic = Logic().rightTrianglePerimeter(base_value, height_value)
+                logic = Form().rightTrianglePerimeter(base_value, height_value)
 
             if (selected == "Box Volume")
-                logic = Logic().boxVolume(lenght_value, width_value, depth_value)
+                logic = Form().boxVolume(lenght_value, width_value, depth_value)
 
             if (selected == "Box Surface Area")
-                logic = Logic().boxSurfaceArea(lenght_value, width_value, depth_value)
+                logic = Form().boxSurfaceArea(lenght_value, width_value, depth_value)
 
             if (selected == "Sphere Volume")
-                logic = Logic().sphereVolume(radius_value)
+                logic = Form().sphereVolume(radius_value)
 
             if (selected == "Sphere Surface Area")
-                logic = Logic().sphereSurfaceArea(radius_value)
+                logic = Form().sphereSurfaceArea(radius_value)
 
 
 

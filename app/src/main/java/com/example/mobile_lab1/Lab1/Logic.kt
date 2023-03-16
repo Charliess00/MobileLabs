@@ -1,10 +1,12 @@
 package com.example.mobile_lab1.Lab1
 
+import android.util.Log
+import android.widget.TextView
+import kotlin.math.abs
 import kotlin.math.pow
-import kotlin.Double
 import kotlin.math.sqrt
 
-class Logic {
+class Form {
     private val pi = 3.14
 
     fun rectangleArea(length: Double, width: Double): Double {
@@ -47,5 +49,67 @@ class Logic {
 
     fun sphereSurfaceArea(radius: Double): Double{
         return 4 * pi * radius.pow(2)
+    }
+}
+class Process {
+    private lateinit var textValue: TextView
+    private var str: String = ""
+    private var res: String = ""
+
+    fun printDiamond(n: Int): String {
+
+        for (i in -n..n) {
+            for (j in -n - 1..n + 1)
+                if (j == 0) {
+                    str = res
+                    res = str
+                }
+                else if (abs(j) == n + 1)
+                    if (abs(i) == n){
+                        str = "$res+"
+                        res = str
+                    }
+                    else{
+                        str = "$res|"
+                        res = str
+                    }
+                else if (abs(i) == n){
+                    str = "$res-"
+                    res = str
+                }
+                else if (i == 0 && j == -n){
+                    str = "$res<"
+                    res = str
+                }
+                else if (i == 0 && j == n){
+                    str = "$res>"
+                    res = str
+                }
+                else if (abs(i - j) == n){
+                    str = "$res\\"
+                    res = str
+                }
+                else if (abs(i + j) == n){
+                    str = "$res/"
+                    res = str
+                }
+                else if (abs(i) + abs(j) < n)
+                    if ((n - i) % 2 != 0){
+                        str = "$res="
+                        res = str
+                    }
+                    else{
+                        str = "$res-"
+                        res = str
+                    }
+                else{
+                    str = "$res "
+                    res = str
+                }
+            str = "$res\n"
+            res = str
+        }
+        Log.d("Process", "Return =\n$res")
+        return res
     }
 }

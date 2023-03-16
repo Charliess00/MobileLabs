@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Mobile_Lab1</string>
+    <string name="app_name">Mobile_Lab2</string>
     <string name="hint">Введите значение</string>
     <string name="length">Length</string>
     <string name="width">Width</string>
@@ -10,6 +10,7 @@
     <string name="nul">0.0</string>
     <string name="calculate">Calculate</string>
     <string name="depth">Depth</string>
+    <string name="clear_all">Clear all</string>
 
     <string-array name="Shapes">
         <item>Rectangle Area</item>
@@ -22,5 +23,16 @@
         <item>Box Surface Area</item>
         <item>Sphere Volume</item>
         <item>Sphere Surface Area</item>
+    </string-array>
+
+    <string-array name="Diamond">
+        <item>0</item>
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+        <item>4</item>
+        <item>5</item>
+        <item>6</item>
+        <item>7</item>
     </string-array>
 </resources>
