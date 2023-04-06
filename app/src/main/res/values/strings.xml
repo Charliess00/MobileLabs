@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Mobile_Lab2</string>
+    <string name="app_name">Mobile_Lab4</string>
     <string name="hint">Введите значение</string>
     <string name="length">Length</string>
     <string name="width">Width</string>
@@ -11,6 +11,26 @@
     <string name="calculate">Calculate</string>
     <string name="depth">Depth</string>
     <string name="clear_all">Clear all</string>
+
+    <string name="gate_test1">ТЕСТ 1\n\n Создан экземпляр Gate, ворота при создании закрыты.</string>
+    <string name="gate_test2">ТЕСТ 2\n\n Ворота могут быть IN.</string>
+    <string name="gate_test3">ТЕСТ 3\n\n Ворота могут быть OUT.</string>
+    <string name="gate_test4">ТЕСТ 4\n\n Ворота не могут быть открыты в недопустимом направлении.</string>
+    <string name="gate_test5">ТЕСТ 5\n\n Метод thru возвращает правильное значение в IN.</string>
+    <string name="gate_test6">ТЕСТ 6\n\n Метод thru возвращает правильное значение в OUT.</string>
+
+
+    <string name="getswingdirection">getSwingDirection()</string>
+    <string name="resul">Результат:</string>
+    <string name="help">OUT = -1 установка ворот в открытое наружное положение;\n
+IN = 1, установка ворот в открытое внутреннее положение;\n
+CLOSED = 0, установка ворот в закрытое положение.</string>
+    <string name="thru_txt">Улитки:</string>
+    <string name="thru">thru()</string>
+    <string name="open_txt">Направление:</string>
+    <string name="open">open()</string>
+    <string name="btn">Далее</string>
+    <string name="none">none</string>
 
     <string-array name="Shapes">
         <item>Rectangle Area</item>

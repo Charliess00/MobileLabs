@@ -113,3 +113,63 @@ class Process {
         return res
     }
 }
+class Gate {
+    var mSwing = CLOSED
+
+    companion object {
+        const val IN = 1
+        const val OUT = -1
+        const val CLOSED = 0
+        const val INVALID = 2
+    }
+
+    fun setSwing(direction: Int): Boolean {
+        if (direction == IN || direction == OUT) {
+            mSwing = direction
+            return true
+        }
+        mSwing = INVALID
+        return false
+    }
+
+    fun open(direction: Int): Boolean {
+        if (direction != IN && direction != OUT) {
+            mSwing = INVALID
+            return false
+        }
+        if (setSwing(direction)) {
+            if (direction == IN) {
+                return true
+            } else if (direction == OUT) {
+                return true
+            }
+        }
+        return false
+    }
+
+    fun close() {
+        mSwing = CLOSED
+    }
+
+    fun getSwingDirection(): Int {
+        return mSwing
+    }
+
+    fun thru(count: Int): Int {
+        if (mSwing == IN) {
+            return count
+        } else if (mSwing == OUT) {
+            return -count
+        }
+        return 0
+    }
+
+    override fun toString(): String {
+        return when (mSwing) {
+            IN -> "Gate is open and swings to enter the pen only"
+            OUT -> "Gate is open and swings to exit the pen only"
+            CLOSED -> "Gate is close"
+            else -> "Gate has an invalid swing direction"
+        }
+    }
+}
