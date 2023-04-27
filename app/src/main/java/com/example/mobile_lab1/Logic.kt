@@ -173,3 +173,191 @@ class Gate {
         }
     }
 }
+
+open class Building
+    (private var mLength: Int, private var mWidth: Int, private var mLotLength: Int,
+     private var mLotWidth: Int)
+{
+
+    fun getLength(): Int {
+        return mLength
+    }
+
+    fun getWidth(): Int {
+        return mWidth
+    }
+
+    fun getLotLength(): Int {
+        return mLotLength
+    }
+
+    fun getLotWidth(): Int {
+        return mLotWidth
+    }
+
+    fun setLength(length: Int) {
+        mLength = length
+    }
+
+    fun setWidth(width: Int) {
+        mWidth = width
+    }
+
+    fun setLotLength(lotLength: Int) {
+        mLotLength = lotLength
+    }
+
+    fun setLotWidth(lotWidth: Int) {
+        mLotWidth = lotWidth
+    }
+
+    fun calcBuildingArea(): Int {
+        return mLength * mWidth
+    }
+
+    fun calcLotArea(): Int {
+        return mLotLength * mLotWidth
+    }
+
+    override fun toString(): String {
+        return ""
+    }
+}
+
+open class House
+    (length: Int, width: Int, lotLength: Int, lotWidth: Int,
+     owner: String? = null, hasPool: Boolean = false) : Building(length, width, lotLength, lotWidth)
+{
+
+    private var mOwner: String? = owner
+    private var mPool: Boolean = hasPool
+
+    fun getOwner(): String? {
+        return mOwner
+    }
+
+    fun hasPool(): Boolean {
+        return mPool
+    }
+
+    fun setOwner(owner: String?) {
+        mOwner = owner
+    }
+
+    fun setPool(hasPool: Boolean) {
+        mPool = hasPool
+    }
+
+    override fun toString(): String {
+        var result = super.toString()
+
+        result += "Owner: " + (getOwner() ?: "n/a")
+
+        if (hasPool()) {
+            result += "; has a pool"
+        }
+        if (calcLotArea() > calcBuildingArea()) {
+            result += "; has big open space"
+        }
+        return result
+    }
+
+    override fun equals(other: Any?): Boolean {
+        if (other == null || other !is House) {
+            return false
+        }
+        return super.equals(other) && mPool == other.mPool
+    }
+
+}
+
+class Cottage : House
+{
+    private val mSecondFloor: Boolean
+
+    constructor(dimension: Int, lotLength: Int, lotWidth: Int) : super(dimension, dimension, lotLength, lotWidth) {
+        mSecondFloor = false
+    }
+
+    constructor(dimension: Int, lotLength: Int, lotWidth: Int, owner: String, secondFloor: Boolean) : super(dimension, dimension, lotLength, lotWidth, owner) {
+        mSecondFloor = secondFloor
+    }
+
+    fun hasSecondFloor(): Boolean {
+        return mSecondFloor
+    }
+
+    override fun toString(): String {
+        var result = super.toString()
+
+        if (mSecondFloor) {
+            result += "; is a two story cottage"
+        } else result += "; is a cottage"
+
+
+
+        return result
+    }
+}
+
+class Office : Building
+{
+    private var mBusinessName: String? = null
+    private var mParkingSpaces = 0
+
+    companion object {
+        fun getTotalOffices(): Int {
+            return sTotalOffices
+        }
+        private var sTotalOffices = 0
+    }
+
+    constructor(length: Int, width: Int, lotLength: Int, lotWidth: Int)
+            : super(length, width, lotLength, lotWidth) {
+        sTotalOffices++
+    }
+
+    constructor(length: Int, width: Int, lotLength: Int, lotWidth: Int, businessName: String)
+            : super(length, width, lotLength, lotWidth) {
+        mBusinessName = businessName
+        sTotalOffices++
+    }
+
+    constructor(length: Int, width: Int, lotLength: Int, lotWidth: Int, businessName: String?, parkingSpaces: Int)
+            : super(length, width, lotLength, lotWidth) {
+        mBusinessName = businessName
+        mParkingSpaces = parkingSpaces
+        sTotalOffices++
+    }
+
+    fun getBusinessName(): String? {
+        return mBusinessName
+    }
+
+    fun getParkingSpaces(): Int {
+        return mParkingSpaces
+    }
+
+    fun setBusinessName(businessName: String) {
+        mBusinessName = businessName
+    }
+
+    fun setParkingSpaces(parkingSpaces: Int) {
+        mParkingSpaces = parkingSpaces
+    }
+
+    override fun toString(): String {
+        var result = super.toString()
+        var v = if(mParkingSpaces == 0) "" else "; has $mParkingSpaces parking spaces"
+        result += "\nBusiness: " + (mBusinessName ?: "unoccupied") + "$v"
+        result += " (total offices: ${getTotalOffices()})"
+        return result
+    }
+
+    override fun equals(other: Any?): Boolean {
+        if (other == null || other !is Office) {
+            return false
+        }
+        return super.equals(other) && mParkingSpaces == other.mParkingSpaces
+    }
+}
